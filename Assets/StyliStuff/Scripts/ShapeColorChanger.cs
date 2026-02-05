@@ -14,7 +14,7 @@ public class ShapeColorChanger : MonoBehaviour
 
 
     public Collider2D[] colliders;
-    public GameManager gm;
+    //public GameManager gm;
     public List<GameObject> touchingObjects;
     private GameObject parent;
     private int numObjects = 0;
@@ -28,19 +28,12 @@ public class ShapeColorChanger : MonoBehaviour
         RandomColor();
         colliders = GetComponents<Collider2D>();
         touchingObjects = new List<GameObject>();
-
-
-
-
-
     }
 
     void OnMouseDown()
     {
         Debug.Log("I HAVE BEEN CLICKED");
         changeColor(gm.colors[gm.colorChoice], gm.colorChoice);
-        
-       
     }
 
     void changeColor(Color tileColor, int value)
@@ -80,53 +73,52 @@ public class ShapeColorChanger : MonoBehaviour
     public colorValue GetColorValue()
     {
         return cValue;
-        bool canChange = true;
-        for (int i = 0; i < numObjects; i++)
-        {
-            ShapeColorChanger scc = touchingObjects[i].GetComponent<ShapeColorChanger>();
-            if (scc.color == c)
-            {
-                canChange = false;
-                break;
-            }
-        }
+        //bool canChange = true;
+        //for (int i = 0; i < numObjects; i++)
+        //{
+        //    ShapeColorChanger scc = touchingObjects[i].GetComponent<ShapeColorChanger>();
+        //    if (scc.color == c)
+        //    {
+        //        canChange = false;
+        //        break;
+        //    }
+        //}
 
-        if (canChange)
-        {
-            sprite.color = c;
-            color = c;
-        }
+        //if (canChange)
+        //{
+        //    sprite.color = c;
+        //    color = c;
+        //}
 
-        else
-        {
-            Debug.Log("color can't change");
-        }
+        //else
+        //{
+        //    Debug.Log("color can't change");
+        //}
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
        
-        GameObject ob = collision.gameObject;
-        if (ob.name == "SquareFill")
-        {
-            touchingObjects.Add(ob);
-            numObjects++;
-        }
-    }
+    //    GameObject ob = collision.gameObject;
+    //    if (ob.name == "SquareFill")
+    //    {
+    //        touchingObjects.Add(ob);
+    //        numObjects++;
+    //    }
+    //}
 
-    void DisableColliders()
-    {
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            colliders[i].enabled = false;
-        }
-    }
+    //void DisableColliders()
+    //{
+    //    for (int i = 0; i < colliders.Length; i++)
+    //    {
+    //        colliders[i].enabled = false;
+    //    }
+    //}
 
-    void EnableColliders()
-    {
-        for (int i = 0;i < colliders.Length; i++)
-        {
-            colliders[i].enabled=true;
-        }
-    }
-    
+    //void EnableColliders()
+    //{
+    //    for (int i = 0;i < colliders.Length; i++)
+    //    {
+    //        colliders[i].enabled=true;
+    //    }
+    //}
 }
