@@ -5,17 +5,25 @@ public class GameManager : MonoBehaviour
     public Color[] colors;
     public int colorChoice;
 
-    // Update is called once per frame
-    void Update()
+    public int tilesLeft = 0;
+
+
+    public void SetTilesLeft(int count)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        tilesLeft = count;
+    }
+
+    public void Increment()
+    {
+        tilesLeft++;
+    }
+
+    public void Decrement()
+    {
+        tilesLeft--;
+        if (tilesLeft == 0)
         {
-            colorChoice++;
-            if (colorChoice == colors.Length)
-            {
-                colorChoice = 0;
-            }
-            Debug.Log(colors[colorChoice]);
+            Debug.Log("You win!");
         }
     }
 }
